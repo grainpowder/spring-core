@@ -1,17 +1,15 @@
 package com.example.demo
 
-import com.example.demo.discount.DiscountPolicy
-import com.example.demo.discount.RateDiscountPolicy
-import com.example.demo.member.*
+import com.example.demo.member.Grade
+import com.example.demo.member.Member
+import com.example.demo.member.MemberService
 import com.example.demo.order.OrderService
-import com.example.demo.order.OrderServiceImpl
 
 fun main() {
 
-    val memberRepository: MemberRepository = MemoryMemberRepository()
-    val memberService: MemberService = MemberServiceImpl(memberRepository)
-    val discountPolicy: DiscountPolicy = RateDiscountPolicy()
-    val orderService: OrderService = OrderServiceImpl(memberService, discountPolicy)
+    val appConfig = AppConfig()
+    val memberService: MemberService = appConfig.memberService()
+    val orderService: OrderService = appConfig.orderService(memberService)
 
     val memberId = 1L
     val member = Member(memberId, "memberA", Grade.VIP)
