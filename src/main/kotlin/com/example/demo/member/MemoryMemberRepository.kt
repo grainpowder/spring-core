@@ -1,5 +1,8 @@
 package com.example.demo.member
 
+import org.springframework.stereotype.Component
+
+@Component
 class MemoryMemberRepository: MemberRepository {
 
     private val store: MutableMap<Long, Member> = mutableMapOf()

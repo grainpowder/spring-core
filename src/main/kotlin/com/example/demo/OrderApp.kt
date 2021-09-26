@@ -9,9 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 fun main() {
 
-    val ac: ApplicationContext = AnnotationConfigApplicationContext(AppConfig::class.java)
-    val memberService: MemberService = ac.getBean("memberService", MemberService::class.java)
-    val orderService: OrderService = ac.getBean("orderService", OrderService::class.java)
+    val ac: ApplicationContext = AnnotationConfigApplicationContext(DemoApplication::class.java)
+    val memberService: MemberService = ac.getBean(MemberService::class.java)
+    val orderService: OrderService = ac.getBean(OrderService::class.java)
 
     val memberId = 1L
     val member = Member(memberId, "memberA", Grade.VIP)
